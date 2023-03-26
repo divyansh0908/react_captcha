@@ -1,13 +1,16 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import Captcha from "./Captcha";
 import { generateCaptchaText } from "../utils/generateCaptcha";
 import { Formik, useFormik, Form } from "formik";
 import * as Yup from "yup";
+import { Toggle } from "./Toggle";
+import { useUi } from "../context/UiContext";
 
 export const SignUpForm = () => {
   const [captcha, setCaptcha] = useState(
     generateCaptchaText(Math.floor(Math.random() * 5) + 6)
   );
+  const { isDark, toggleTheme } = useUi();
   const validate = Yup.object({
     name: Yup.string()
       .max(20, "Must be 15 characters or less")
@@ -29,9 +32,15 @@ export const SignUpForm = () => {
   };
 
   return (
-    <div className="bg-grey-lighter min-h-screen flex flex-col">
+    <div className={` min-h-screen flex flex-col ${!isDark?"bg-gray-100": "bg-black"}`}>
+
+      
       <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-        <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+        
+        <div className={`bg-white px-6 py-8 rounded shadow-md text-black w-full ${!isDark ? "bg-white": "bg-gray-600"}`}>
+        <div className="w-30">
+        <Toggle />
+        </div>
           <h1 className="mb-8 text-3xl text-center">Sign up</h1>
           <Formik
             initialValues={{

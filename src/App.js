@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { SignUpForm } from './component/SignUpForm';
 import { Helmet } from 'react-helmet';
+import { UiProvider } from './context/UiContext';
 
 function App() {
   const description = "This is a react form for signing up with captcha feature"
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <div
-      className="bg-red"
+      
     >
    <Helmet>
 { /* Standard metadata tags */ }
@@ -47,8 +48,11 @@ function App() {
 
 { /* End Twitter tags */ }
 </Helmet>
+<UiProvider >
       
     <SignUpForm />
+
+</UiProvider>
   
     </div>
   );
