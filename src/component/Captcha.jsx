@@ -7,7 +7,6 @@ function TextToImage({ captcha, fontSize=18, fontColor="#000" }) {
     const canvasRef = useRef(null);
 
   useEffect(() => {
-    console.log(captcha, "jjjj");
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
     const width = canvas.width;
@@ -47,7 +46,6 @@ const backgroundColor = randomHexColor();
         context.stroke();
       }
     }
-    // context.fillText(text, width / 2, height / 2);
   }, [captcha, fontColor, fontSize]);
 
   return <canvas ref={canvasRef} width={200} height={50} />;

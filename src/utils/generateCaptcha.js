@@ -4,6 +4,5 @@ export function generateCaptchaText(length) {
     for (let i = 0; i < length; i++) {
       captchaText += characters.charAt(Math.floor(Math.random() * characters.length));
     }
-    console.log('executed');
     return captchaText;
   }
